@@ -34,6 +34,7 @@ docker run -it --rm \
   uv add --dev jupyter
   uv run jupyter notebook
 
+Rest of the task available in task3.ipynb notebook
 
   # Question 4,5,6 available in task3.ipynb
 
