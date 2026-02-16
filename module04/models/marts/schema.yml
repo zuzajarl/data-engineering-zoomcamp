@@ -131,7 +131,6 @@ models:
         data_tests:
           - not_null
       - name: payment_type
-        description: Payment method code
         data_type: integer
       - name: payment_type_description
         description: Human-readable payment method description
