@@ -7,16 +7,16 @@ renamed as (
         -- identifiers (standardized naming for consistency across yellow/green)
         cast(vendorid as integer) as vendor_id,
         cast(ratecodeid as integer) as rate_code_id,
-        {{ safe_cast('pulocationid', 'integer') }} as pickup_location_id,
-        {{ safe_cast('dolocationid', 'integer')}} as dropoff_location_id,
+        cast(pulocationid as integer) as pickup_location_id,
+        cast(dolocationid as integer) as dropoff_location_id,
 
         -- timestamps (standardized naming)
-        cast(lpep_pickup_datetime as timestamp) as pickup_datetime,  -- lpep = Taxicab Passenger Enhancement Program (yellow taxis)
-        cast(lpep_dropoff_datetime as timestamp) as dropoff_datetime,
+        cast(tpep_pickup_datetime as timestamp) as pickup_datetime,  -- tpep = Taxicab Passenger Enhancement Program (yellow taxis)
+        cast(tpep_dropoff_datetime as timestamp) as dropoff_datetime,
 
         -- trip info
         cast(store_and_fwd_flag as string) as store_and_fwd_flag,
-        {{ safe_cast('passenger_count', 'integer') }} as passenger_count,
+        cast(passenger_count as integer) as passenger_count,
         cast(trip_distance as numeric) as trip_distance,
 
         -- payment info
@@ -38,5 +38,5 @@ select * from renamed
 
 -- Sample records for dev environment using deterministic date filter
 {% if target.name == 'dev' %}
-where pickup_datetime >= '2019-01-01' and pickup_datetime < '2019-02-01'
+where pickup_datetime >= '2019-01-01' and pickup_datetime < '2021-01-01'
 {% endif %}
